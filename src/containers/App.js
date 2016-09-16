@@ -5,6 +5,8 @@ import Header from '../components/Header'
 import MainSection from '../components/MainSection'
 import * as TodoActions from '../actions'
 
+import { Replay } from 'redux-vcr';
+
 class App extends Component {
   render() {
     const { todos, textInput, visibilityFilter, actions } = this.props
@@ -21,6 +23,7 @@ class App extends Component {
           visibilityFilter={visibilityFilter}
           actions={actions}
         />
+        <Replay />
       </div>
     )
   }
