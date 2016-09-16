@@ -13,6 +13,10 @@
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
+    "redux-vcr.capture": "^0.1.8",
+    "redux-vcr.persist": "^0.1.8",
+    "redux-vcr.replay": "^0.1.8",
+    "redux-vcr.retrieve": "^0.1.8",
     "todomvc-app-css": "^2.0.6"
   },
   "scripts": {
