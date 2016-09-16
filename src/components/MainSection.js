@@ -10,17 +10,12 @@ const TODO_FILTERS = {
 }
 
 class MainSection extends Component {
-  constructor(props, context) {
-    super(props, context)
-    this.state = { filter: SHOW_ALL }
-  }
-
   handleClearCompleted() {
     this.props.actions.clearCompleted()
   }
 
   handleShow(filter) {
-    this.setState({ filter })
+    this.props.actions.updateVisibilityFilter(filter)
   }
 
   renderToggleAll(completedCount) {
@@ -36,15 +31,14 @@ class MainSection extends Component {
   }
 
   renderFooter(completedCount) {
-    const { todos } = this.props
-    const { filter } = this.state
+    const { todos, visibilityFilter } = this.props
     const activeCount = todos.length - completedCount
 
     if (todos.length) {
       return (
         <Footer completedCount={completedCount}
                 activeCount={activeCount}
-                filter={filter}
+                filter={visibilityFilter}
                 onClearCompleted={this.handleClearCompleted.bind(this)}
                 onShow={this.handleShow.bind(this)} />
       )
@@ -52,10 +46,9 @@ class MainSection extends Component {
   }
 
   render() {
-    const { todos, actions } = this.props
-    const { filter } = this.state
+    const { todos, visibilityFilter, actions } = this.props
 
-    const filteredTodos = todos.filter(TODO_FILTERS[filter])
+    const filteredTodos = todos.filter(TODO_FILTERS[visibilityFilter])
     const completedCount = todos.reduce((count, todo) =>
       todo.completed ? count + 1 : count,
       0

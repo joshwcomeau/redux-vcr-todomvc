@@ -7,11 +7,20 @@ import * as TodoActions from '../actions'
 
 class App extends Component {
   render() {
-    const { todos, actions } = this.props
+    const { todos, textInput, visibilityFilter, actions } = this.props
+
     return (
       <div>
-        <Header addTodo={actions.addTodo} />
-        <MainSection todos={todos} actions={actions} />
+        <Header
+          addTodo={actions.addTodo}
+          writeTodoText={actions.writeTodoText}
+          textInput={textInput}
+        />
+        <MainSection
+          todos={todos}
+          visibilityFilter={visibilityFilter}
+          actions={actions}
+        />
       </div>
     )
   }
@@ -24,7 +33,9 @@ App.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    todos: state.todos
+    todos: state.todos,
+    textInput: state.textInput,
+    visibilityFilter: state.visibilityFilter,
   }
 }
 

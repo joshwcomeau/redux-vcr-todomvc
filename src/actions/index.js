@@ -1,5 +1,9 @@
 import * as types from '../constants/ActionTypes'
 
+export function writeTodoText(text) {
+  return { type: types.WRITE_TODO_TEXT, text }
+}
+
 export function addTodo(text) {
   return { type: types.ADD_TODO, text }
 }
@@ -22,4 +26,8 @@ export function completeAll() {
 
 export function clearCompleted() {
   return { type: types.CLEAR_COMPLETED }
+}
+
+export function updateVisibilityFilter(filter) {
+  return { type: types.UPDATE_VISIBILITY_FILTER, filter }
 }

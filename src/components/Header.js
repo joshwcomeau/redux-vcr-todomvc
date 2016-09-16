@@ -13,6 +13,8 @@ class Header extends Component {
       <header className="header">
           <h1>todos</h1>
           <TodoTextInput newTodo
+                         value={this.props.textInput}
+                         onWrite={this.props.writeTodoText}
                          onSave={this.handleSave.bind(this)}
                          placeholder="What needs to be done?" />
       </header>
@@ -21,7 +23,9 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  addTodo: PropTypes.func.isRequired
+  textInput: PropTypes.string.isRequired,
+  writeTodoText: PropTypes.func.isRequired,
+  addTodo: PropTypes.func.isRequired,
 }
 
 export default Header
